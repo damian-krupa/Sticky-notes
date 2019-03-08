@@ -1,7 +1,5 @@
-(function () {
-    'use strict';
-
-    var draggedEl,
+(() => {
+    let draggedEl,
         onDragStart,
         onDrag,
         onDragEnd,
@@ -11,7 +9,7 @@
         addNoteBtnEl;
 
     onDragStart = function (ev) {
-        var boundingClientRect;
+        let boundingClientRect;
         if (ev.target.className.indexOf('bar') === -1) {
             return;
         }
@@ -29,7 +27,7 @@
             return;
         }
 
-        var posX = ev.clientX + grabPointX,
+        let posX = ev.clientX + grabPointX,
             posY = ev.clientY + grabPointY;
 
         if (posX < 0) {
@@ -40,7 +38,7 @@
             posY = 0;
         }
 
-        draggedEl.style.transform = "translateX(" + posX + "px) translateY(" + posY + "px)";
+        draggedEl.style.transform = `translateX(${posX}px) translateY(${posY}px)`;
     };
 
     onDragEnd = function () {
@@ -50,13 +48,11 @@
     };
 
     createNote = function () {
-        var stickerEl = document.createElement('div'),
+        const stickerEl = document.createElement('div'),
             barEl = document.createElement('div'),
             textareaEl = document.createElement('textarea');
 
-        var transformCSSValue = "translateX(" + Math.random() * 400 + "px) translateY(" + Math.random() * 400 + "px)";
-
-        stickerEl.style.transform = transformCSSValue;
+        stickerEl.style.transform = `translateX(${Math.random() * 400}px) translateY(${Math.random() * 400}px)`;
 
         barEl.classList.add('bar');
         stickerEl.classList.add('sticker');
